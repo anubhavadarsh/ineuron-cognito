@@ -18,8 +18,10 @@ Route::group([
     'prefix' => 'auth'
 ], function () {
     // Common Apis
-    Route::post('/user_signup', 'App\Http\Controllers\Api\AuthController@user_signup');
-    Route::post('/user_login', 'App\Http\Controllers\Api\AuthController@user_login');
+    // Route::post('/user_signup', 'App\Http\Controllers\Api\AuthController@user_signup');
+    // Route::post('/user_login', 'App\Http\Controllers\Api\AuthController@user_login');
+    Route::post('/otp_login_send', 'App\Http\Controllers\Api\AuthController@otp_login_send');
+    Route::post('/otp_login_verify', 'App\Http\Controllers\Api\AuthController@otp_login_verify');
     Route::group([
         'middleware' => 'auth:api'
     ], function() {
