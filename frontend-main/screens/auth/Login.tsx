@@ -11,19 +11,12 @@ import {
 } from "native-base";
 import { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
-import {
-  SafeAreaView,
-  withSafeAreaInsets,
-} from "react-native-safe-area-context";
-import {
-  GantariBoldText,
-  GantariMediumText,
-} from "../../components/StyledText";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { GantariBoldText } from "../../components/StyledText";
 import { AuthStackScreenProps } from "../../types";
-import size from "../../constants/Layout";
-import CarouselIndicator from "../../components/CarouselIndicator";
 import GoBack from "../../components/GoBack";
 import { useGenerateOtp } from "../../components/Login/hook";
+import BannerText from "../../components/BannerText";
 
 export default function LoginScreen({
   navigation,
@@ -63,6 +56,7 @@ export default function LoginScreen({
     verifyOtp({
       phone: phoneInput,
       otp: otpInput,
+      navigation,
     });
   };
 
@@ -71,7 +65,11 @@ export default function LoginScreen({
       <GoBack handler={handleGoBack} />
       <View style={{ flex: 1, justifyContent: "space-between" }}>
         <View style={styles.textContent}>
-          <Fixedtext />
+          <BannerText
+            pText="Let's sign you in."
+            s1Text="Welcome back."
+            s2Text="You've been missed!"
+          />
           <Form
             handleGetOtp={handleGetOtp}
             phoneInput={phoneInput}
@@ -95,30 +93,15 @@ export default function LoginScreen({
             borderRadius="xl"
             onPress={handleVerifyOtp}
           >
-            <GantariBoldText style={{ fontSize: 20 }}>Sign In</GantariBoldText>
+            <GantariBoldText style={{ fontSize: 20, color: "black" }}>
+              Sign In
+            </GantariBoldText>
           </Button>
         )}
       </View>
     </SafeAreaView>
   );
 }
-
-const Fixedtext: FC = () => {
-  return (
-    <>
-      <GantariBoldText style={[styles.text, styles.textPrimary]}>
-        Let's sign you in.
-      </GantariBoldText>
-      <GantariMediumText style={[styles.text, styles.textSecondary]}>
-        Welcome back.
-      </GantariMediumText>
-      <GantariMediumText style={[styles.text, styles.textSecondary]}>
-        You've been missed!
-      </GantariMediumText>
-    </>
-  );
-};
-
 interface IFormProps {
   phoneInput: string;
   setPhoneInput: Dispatch<SetStateAction<string>>;
@@ -205,7 +188,9 @@ const Form: FC<IFormProps> = ({
           borderRadius="xl"
           onPress={handleGetOtp}
         >
-          <GantariBoldText style={{ fontSize: 20 }}>Get OTP</GantariBoldText>
+          <GantariBoldText style={{ fontSize: 20, color: "black" }}>
+            Get OTP
+          </GantariBoldText>
         </Button>
       )}
     </FormControl>

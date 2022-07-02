@@ -27,6 +27,7 @@ const linking: LinkingOptions<RootStackParamList & AuthStackParamList> = {
           },
         },
       },
+      Regis: "Regis",
       Info: "Info",
       Login: "Login",
       Modal: "modal",

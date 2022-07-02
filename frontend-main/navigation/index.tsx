@@ -27,7 +27,7 @@ import {
   AuthStackParamList,
 } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
-import { InfoScreen, LoginScreen } from "../screens/auth";
+import { InfoScreen, LoginScreen, RegisScreen } from "../screens/auth";
 
 export default function Navigation({
   colorScheme,
@@ -85,6 +85,11 @@ function AuthNavigator() {
       <Stack.Screen
         name="Login"
         component={LoginScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Regis"
+        component={RegisScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

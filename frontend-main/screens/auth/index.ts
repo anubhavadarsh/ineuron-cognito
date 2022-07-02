@@ -1,3 +1,5 @@
 import InfoScreen from "./InfoScreen";
 import LoginScreen from "./Login";
-export { InfoScreen, LoginScreen };
+import RegisScreen from "./RegisScreen";
+
+export { InfoScreen, LoginScreen, RegisScreen };

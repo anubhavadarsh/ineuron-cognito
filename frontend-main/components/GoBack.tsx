@@ -5,13 +5,22 @@ import size from "../constants/Layout";
 
 interface IProps {
   handler: () => void;
+  show?: boolean;
 }
 
-const GoBack: FC<IProps> = ({ handler }) => {
+const GoBack: FC<IProps> = ({ handler, show }) => {
   return (
-    <View style={styles.container}>
+    <View
+      style={{
+        ...styles.container,
+      }}
+    >
       <TouchableOpacity onPress={handler}>
-        <AntDesign name="back" size={24} color="white" />
+        <AntDesign
+          name="back"
+          size={24}
+          color={!show ? "transparent" : "white"}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -28,4 +37,7 @@ const styles = StyleSheet.create({
   },
 });
 
+GoBack.defaultProps = {
+  show: true,
+};
 export default GoBack;
